@@ -1,29 +1,43 @@
 export type SiteConfig = typeof siteConfig;
 
+
+export const logonConfig = {
+	name: "Orvi Metals - Inicia Sesión",
+	description: "Inicio de sesión o registro de los usuarios",
+	links: {
+		loginSuccesfull: '/tienda/',
+		
+	},
+}
+
 export const siteConfig = {
-	name: "Next.js + NextUI",
-	description: "Make beautiful websites regardless of your design experience.",
+	name: "Orvi Metals",
+	description: "Tienda en línea de Orvi Metals.",
 	navItems: [
 		{
 			label: "Home",
 			href: "/",
 		},
-    {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    }
+		{
+			label: "Docs",
+			href: "docs",
+		},
+		{
+			label: "Pricing",
+			href: "/pricing",
+		},
+		{
+			label: "Blog",
+			href: "/blog",
+		},
+		{
+			label: "About",
+			href: "/about",
+		},
+		{
+			label: "logout",
+			href: "/login",
+		},
 	],
 	navMenuItems: [
 		{
@@ -56,14 +70,10 @@ export const siteConfig = {
 		},
 		{
 			label: "Logout",
-			href: "/logout",
+			href: "/login",
 		},
 	],
 	links: {
-		github: "https://github.com/nextui-org/nextui",
-		twitter: "https://twitter.com/getnextui",
-		docs: "https://nextui.org",
-		discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev"
+
 	},
 };
