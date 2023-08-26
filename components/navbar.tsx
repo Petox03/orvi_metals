@@ -8,13 +8,9 @@ import {
 	NavbarMenuItem,
 } from "@nextui-org/navbar";
 
-//DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar
-
 import { DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/dropdown";
 import { Avatar } from "@nextui-org/avatar";
-
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
+import Image from "next/image";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 
@@ -55,11 +51,9 @@ export const Navbar = () => {
 
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="center">
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-				<NavbarBrand as="li" className="gap-3 max-w-fit">
+				<NavbarBrand as="li" className="gap-3 max-w-fit md:ml-10">
 					<NextLink className="flex justify-start items-center gap-1" href="/">
-						<Logo />
-						<h3 className="font-bold text-lg">Orvi</h3>
-						<p className="font-bold text-inherit">Metals</p>
+						<Logo width={300} height={300} />
 					</NextLink>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -88,6 +82,11 @@ export const Navbar = () => {
 					<ThemeSwitch />
 				</NavbarItem>
 
+				<NavbarItem className="hidden sm:flex gap-2">
+					<Link href="/cart"><Image src='/img/icons/shopCart.png' width={500} height={500} alt="ShopCart"></Image></Link>
+				</NavbarItem>
+
+				<NavbarItem>
 				<Avatar
 					isBordered
 					as="button"
@@ -97,6 +96,8 @@ export const Navbar = () => {
 					size="sm"
 					src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
 				/>
+				</NavbarItem>
+
 			</NavbarContent>
 
 			<NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
