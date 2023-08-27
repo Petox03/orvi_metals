@@ -19,9 +19,9 @@ export default function ProductFeatures() {
     };
 
     return (
-        <section className="mt-12 text-center md:text-start">
-            <p>Tipo</p>
+        <section className="mt-12 md:text-start">
             <RadioGroup
+                label="Tipo"
                 orientation="horizontal"
             >
                 <Radio value="A">A</Radio>
@@ -36,9 +36,9 @@ export default function ProductFeatures() {
                 <div className="items-center">
                     <h1 className="text-sm">Cantidad</h1>
                     <div className="flex gap-4 border-2 items-center">
-                        <Button size="sm" className="bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700 text-xl px-4 py-2 rounded" onClick={decrement}>-</Button>
+                        <button className="bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700 text-xl px-4 py-2" onClick={decrement}>-</button>
                         <span className="text-xl">{count}</span>
-                        <Button size="sm" className="bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700 text-xl px-4 py-2 rounded" onClick={increment}>+</Button>
+                        <button className="bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700 text-xl px-3 py-2" onClick={increment}>+</button>
                     </div>
                 </div>
             </div>
