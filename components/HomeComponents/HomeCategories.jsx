@@ -34,7 +34,7 @@ export default function HomeCategories() {
                     </CardBody>
                 </Card>
 
-            <Divider className="absolute left-[50%]" orientation="vertical"></Divider>
+                <Divider className="absolute hidden md:block left-[50%]" orientation="vertical"></Divider>
 
             </div>
         </>

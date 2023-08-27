@@ -46,7 +46,7 @@ export const Navbar = () => {
 	);
 
 	return (
-		<NextUINavbar maxWidth="xl" position="sticky">
+		<NextUINavbar maxWidth="xl" className="fixed">
 
 
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="center">
@@ -141,7 +141,7 @@ export const Navbar = () => {
 											? "danger"
 											: "foreground"
 								}
-								href="#"
+								href={`${item.href}`}
 								size="lg"
 							>
 								{item.label}
