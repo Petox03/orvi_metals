@@ -17,7 +17,7 @@ export default function HomeCard() {
 						<div className="grid grid-cols-2">
 							<div>
 								<Link
-									href={'#'}
+									href={'/products'}
 									className="text-lg md:text-xl | mt-6 md:mt-0">
 									Ver productos ➤
 								</Link>
