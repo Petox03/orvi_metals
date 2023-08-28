@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 
 export default function ProductFeatures() {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
 
     const increment = () => {
@@ -13,7 +13,7 @@ export default function ProductFeatures() {
     };
 
     const decrement = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount(count - 1);
         }
     };
