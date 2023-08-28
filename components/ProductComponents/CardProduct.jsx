@@ -1,27 +1,21 @@
-'use client';
-import { useState, useEffect } from 'react';
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
 
-const fetchProducts = async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.json();
-    return data;
+
+const fetchProducts = () => {
+    return fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        next: {
+            revalidate: 60
+        }
+    })
+    .then(res => res.json());
 };
 
-export default function CardProduct({ maxView }) {
-    const [products, setProducts] = useState([]);
+export default async function CardProduct({ maxView }) {
 
-    useEffect(() => {
-        async function loadProducts() {
-            const fetchedProducts = await fetchProducts();
-            setProducts(fetchedProducts);
-        }
-
-        loadProducts();
-    }, []);
+    const products = await fetchProducts();
 
     return (
         <>
