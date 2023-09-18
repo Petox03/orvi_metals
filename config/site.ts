@@ -15,58 +15,38 @@ export const siteConfig = {
 	description: "Tienda en línea de Orvi Metals.",
 	navItems: [
 		{
-			label: "Home",
+			label: "Inicio",
 			href: "/",
 		},
 		{
-			label: "Docs",
-			href: "docs",
+			label: "Productos",
+			href: "/products",
 		},
 		{
-			label: "Pricing",
-			href: "/pricing",
+			label: "Carrito",
+			href: "/cart",
 		},
 		{
-			label: "Blog",
-			href: "/blog",
-		},
-		{
-			label: "About",
-			href: "/about",
-		},
-		{
-			label: "logout",
-			href: "/login",
+			label: "Órdenes",
+			href: "/quote",
 		},
 	],
 	navMenuItems: [
 		{
-			label: "Profile",
-			href: "/profile",
+			label: "Inicio",
+			href: "/",
 		},
 		{
-			label: "Dashboard",
-			href: "/dashboard",
+			label: "Productos",
+			href: "/products",
 		},
 		{
-			label: "Projects",
-			href: "/projects",
+			label: "Carrito",
+			href: "/cart",
 		},
 		{
-			label: "Team",
-			href: "/team",
-		},
-		{
-			label: "Calendar",
-			href: "/calendar",
-		},
-		{
-			label: "Settings",
-			href: "/settings",
-		},
-		{
-			label: "Help & Feedback",
-			href: "/help-feedback",
+			label: "Órdenes",
+			href: "/quote",
 		},
 		{
 			label: "Logout",

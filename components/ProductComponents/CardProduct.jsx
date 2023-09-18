@@ -45,10 +45,6 @@ export default async function CardProduct({ maxView }) {
                     </div>
                 ))}
             </div>
-
-            <div className='mt-10 container flex items-center place-content-center text-xl md:text-3xl'>
-                <Link href={'/products'}>Conoce Todos Los Productos ➤</Link>
-            </div>
         </>
     );
 }

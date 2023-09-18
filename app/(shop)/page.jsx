@@ -18,6 +18,10 @@ export default function Home() {
 
 			<CardProduct maxView={4}/>
 
+			<div className='mt-10 container flex items-center place-content-center text-xl md:text-3xl'>
+                <Link href={'/products'}>Conoce Todos Los Productos ➤</Link>
+            </div>
+
 		</main>
 		</>
 	);

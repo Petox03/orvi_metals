@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "../providers";
-import { Link } from "@nextui-org/link";
+import ErpNavbarComponent from '@/components/ErpNavbarComponent';
+import ErpNav from '@/components/ErpNav';
 import clsx from "clsx";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="es" suppressHydrationWarning>
 			<head />
 			<body
 				className={clsx(
@@ -37,8 +38,17 @@ export default function RootLayout({
 					fontSans.variable
 				)}
 			>
-				<Providers themeProps={{ attribute: "class", defaultTheme: "light",}}>
-							{children}
+				<Providers themeProps={{ attribute: "class", defaultTheme: "light", }}>
+					<div className="flex">
+						<ErpNavbarComponent />
+						<main className="flex-1">
+							<ErpNav></ErpNav>
+
+							<div className="p-10">
+								{children}
+							</div>
+						</main>
+					</div>
 				</Providers>
 			</body>
 		</html>
