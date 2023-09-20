@@ -1,4 +1,4 @@
-export default async function a() {
+export default function home() {
 
     return (
         <>

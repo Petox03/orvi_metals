@@ -3,14 +3,14 @@ import React from "react";
 import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card';
 import { Divider } from '@nextui-org/divider';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue } from "@nextui-org/table";
-import { Progress, Skeleton } from "@nextui-org/react";
+import { Progress, Skeleton, Image } from "@nextui-org/react";
 
 export default function admin() {
 
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-                <div className="md:col-span-3">
+                <div className="md:col-span md:col-span-3">
                     <Card className='bg-[#212329] text-white min-h-[30rem]'>
                         <CardHeader className='text-3xl font-semibold'>Productos top</CardHeader>
                         <Divider className='bg-[#3a3a3d]' />
@@ -91,7 +91,7 @@ export default function admin() {
                         </CardBody>
                     </Card>
                 </div>
-                <div className="md:col-span-1">
+                <div className="md:col-span md:col-span-1">
                     <Card className='bg-[#212329] text-white min-h-[30rem]'>
                         <CardHeader className='text-2xl p-7'>
                             <p className='absolute left-[50%] ml-[-50px]'>Inventario</p>
@@ -129,12 +129,88 @@ export default function admin() {
 
                 <div>
                     <Card className='bg-[#212329] text-white min-h-[30rem]'>
-                        a
+                        <CardHeader className="text-2xl">
+                            <p>Meta de ventas</p>
+                        </CardHeader>
+                        <Divider className='bg-[#3a3a3d]' />
+                        <CardBody>
+                            <div className="grid grids-cols-12 md:grid-cols-11 gap-4 mb-12 md:mb-7">
+                                <div className="col-span-3 md:col-span-2 flex justify-center">
+                                    <Image src="/img/icons/b0f7cc.png" alt="image" width={1000} height={1000} className="w-[50px] md:w-[80px] h-[50px] md:h-[80px]" />
+                                </div>
+                                <div className="col-span-9">
+                                    <div className="flex justify-between text-sm md:text-xl">
+                                        <p className="md:ml-5 mb-5 mr-2">Refractario</p>
+                                        <p>$994k / <span className="text-gray-400">$1754k</span></p>
+                                    </div>
+                                    <Progress color="primary" size="lg" aria-label="Loading..." value={60} />
+                                </div>
+                            </div>
+                            <div className="grid grids-cols-12 md:grid-cols-11 gap-4 mb-12 md:mb-7">
+                                <div className="col-span-3 md:col-span-2 flex justify-center">
+                                    <Image src="/img/icons/b0f7cc.png" alt="image" width={1000} height={1000} className="w-[50px] md:w-[80px] h-[50px] md:h-[80px]" />
+                                </div>
+                                <div className="col-span-9">
+                                    <div className="flex justify-between text-sm md:text-xl">
+                                        <p className="md:ml-5 mb-5 mr-2">Metal</p>
+                                        <p>$164K / <span className="text-gray-400">$570k</span></p>
+                                    </div>
+                                    <Progress color="primary" size="lg" aria-label="Loading..." value={30} />
+                                </div>
+                            </div>
+                            <div className="grid grids-cols-12 md:grid-cols-11 gap-4 mb-12 md:mb-7">
+                                <div className="col-span-3 md:col-span-2 flex justify-center">
+                                    <Image src="/img/icons/b0f7cc.png" alt="image" width={1000} height={1000} className="w-[50px] md:w-[80px] h-[50px] md:h-[80px]" />
+                                </div>
+                                <div className="col-span-9">
+                                    <div className="flex justify-between text-sm md:text-xl">
+                                        <p className="md:ml-5 mb-5 mr-2">Ferroaleaciones</p>
+                                        <p>$373K / <span className="text-gray-400">$223K</span></p>
+                                    </div>
+                                    <Progress color="primary" size="lg" aria-label="Loading..." value={100} />
+                                </div>
+                            </div>
+                            <div className="grid grids-cols-12 md:grid-cols-11 gap-4 mb-12 md:mb-7">
+                                <div className="col-span-3 md:col-span-2 flex justify-center">
+                                    <Image src="/img/icons/b0f7cc.png" alt="image" width={1000} height={1000} className="w-[50px] md:w-[80px] h-[50px] md:h-[80px]" />
+                                </div>
+                                <div className="col-span-9">
+                                    <div className="flex justify-between text-sm md:text-xl">
+                                        <p className="md:ml-5 mb-5 mr-2">Refractario #2</p>
+                                        <p>$118K / <span className="text-gray-400">$167K</span></p>
+                                    </div>
+                                    <Progress color="primary" size="lg" aria-label="Loading..." value={80} />
+                                </div>
+                            </div>
+                        </CardBody>
                     </Card>
                 </div>
                 <div>
                     <Card className='bg-[#212329] text-white min-h-[30rem]'>
-                        a
+                        <CardHeader className='relative text-2xl p-7'>
+                            <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>Mensajes Pendientes</p>
+                        </CardHeader>
+                        <Divider className='bg-[#3a3a3d]' />
+                        <CardBody>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                            <Skeleton className="mb-4 w-full">
+                                <div className="h-12 rounded-lg bg-default-200"></div>
+                            </Skeleton>
+                        </CardBody>
                     </Card>
                 </div>
 

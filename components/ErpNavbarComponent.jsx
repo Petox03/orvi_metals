@@ -9,7 +9,7 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 const ErpNavbarComponent = () => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const handdleClick = () =>{
+    const handdleClick = () => {
         setIsOpen(false);
     }
 
@@ -29,7 +29,7 @@ const ErpNavbarComponent = () => {
                             </button>
                         </div>
                         <nav className={`mt-5 ${isOpen ? 'block' : 'hidden'}`}>
-                            <div className="grid grid-cols-1 md:grid-cols-3 | justify-items-center">
+                            <div className="grid grid-cols-1 md:grid-cols-3 | justify-items-center mb-7">
                                 <div>
                                     <Image className='rounded-full' src={'/img/logo/logoErpNav.png'} alt='Logo Image' width={100} height={100}></Image>
                                 </div>
@@ -39,22 +39,22 @@ const ErpNavbarComponent = () => {
                                 </div>
                             </div>
 
-                            <button onClick={handdleClick} className="block rounded-full mt-7"><Link href="/admin">Home</Link></button>
-                            <button onClick={handdleClick} className="block rounded-full mt-7"><Link href="/admin/home">Prueba</Link></button>
-
-                            {/* <Accordion selectionMode="multiple" isCompact>
-                                    <AccordionItem key="1" aria-label="Accordion 1" title={<span className="text-white">Home</span>}>
-                                        <RadioGroup>
-                                            <Radio value="home"><span className="text-white">Dashboard</span></Radio>
-                                        </RadioGroup>
-                                    </AccordionItem>
-                                    <AccordionItem key="2" aria-label="Accordion 1" title={<span className="text-white">Accordion 1</span>}>
-                                        {defaultContent}
-                                    </AccordionItem>
-                                    <AccordionItem key="3" aria-label="Accordion 2" title={<span className="text-white">Accordion 2</span>}>
-                                        {defaultContent}
-                                    </AccordionItem>
-                                </Accordion> */}
+                            <Accordion selectionMode="multiple" isCompact>
+                                <AccordionItem key="1" aria-label="Accordion 1" title={<span className="text-white">Home</span>}>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin">Inicio</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/home">Prueba</Link></button>
+                                </AccordionItem>
+                                <AccordionItem key="2" aria-label="Accordion 1" title={<span className="text-white">E-Commerce</span>}>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/dashboard">Dashboard</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/products">Productos</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/orders">Órdenes</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/promotions">Promociones</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/support">Soporte</Link></button>
+                                </AccordionItem>
+                                <AccordionItem key="3" aria-label="Accordion 2" title={<span className="text-white">Accordion 2</span>}>
+                                    
+                                </AccordionItem>
+                            </Accordion>
 
                         </nav>
                     </div>
