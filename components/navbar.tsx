@@ -26,6 +26,8 @@ import {
 
 import { Logo } from "@/components/icons";
 
+import { useRouter } from "next/router";
+
 export const Navbar = () => {
 
 	const searchInput = (
@@ -43,6 +45,9 @@ export const Navbar = () => {
 			type="search"
 		/>
 	);
+
+	/* const router = useRouter();	
+	const currentPath = router.pathname; */
 
 	return (
 		<NextUINavbar maxWidth="xl" className="fixed">
@@ -71,6 +76,23 @@ export const Navbar = () => {
 						</NavbarItem>
 					))}
 				</ul>
+				{/* <ul className="hidden lg:flex gap-4 justify-start ml-2">
+					{siteConfig.navItems.map((item) => (
+						<NavbarItem key={item.href}>
+							<NextLink
+								className={clsx(
+									linkStyles({ color: "foreground" }),
+									"data-[active=true]:text-primary data-[active=true]:font-medium",
+									{ 'text-primary': currentPath === item.href }
+								)}
+								color="foreground"
+								href={item.href}
+							>
+								{item.label}
+							</NextLink>
+						</NavbarItem>
+					))}
+				</ul> */}
 			</NavbarContent>
 
 			<NavbarContent
@@ -146,10 +168,7 @@ export const Navbar = () => {
 					{siteConfig.navMenuItems.map((item, index) => (
 						<NavbarMenuItem key={`${item}-${index}`}>
 							<Link
-								color={
-									index === 2
-										? "primary"
-										: index === siteConfig.navMenuItems.length - 1
+								color={index === siteConfig.navMenuItems.length - 1
 											? "danger"
 											: "foreground"
 								}
@@ -162,6 +181,6 @@ export const Navbar = () => {
 					))}
 				</div>
 			</NavbarMenu>
-		</NextUINavbar>
+		</NextUINavbar >
 	);
 };

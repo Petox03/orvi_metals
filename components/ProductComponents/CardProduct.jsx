@@ -36,7 +36,7 @@ export default async function CardProduct({ maxView }) {
 
                             </CardBody>
                             <CardFooter className='flex justify-center'>
-                                <Link className='mt-4' href={`products/${item.id}`}>
+                                <Link className='mt-12 md:mt-4 mb-3' href={`products/${item.id}`}>
                                     <Button size='lg' color='primary'>Ver Detalles</Button>
                                 </Link>
                             </CardFooter>
