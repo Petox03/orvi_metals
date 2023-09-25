@@ -22,13 +22,37 @@ model Product {
   id    Int     @id @default(autoincrement())
   name  String
   amount Int
-  minAmount Int
+  dateOfArrival DateTime
   storageType StorageType @relation(fields: [storageTypeId], references: [id])
   storageTypeId Int
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+}
+
+model Category{
+  id Int @id @default(autoincrement())
+  category String
+  products Product[]
 }
 
 model StorageType {
   id    Int     @id @default(autoincrement())
   Type String
   products Product[]
+}
+
+model Order{
+  id Int @id @default(autoincrement())
+  client String
+  status Status @relation(fields: [statusId], references: [id])
+  statusId Int
+  creationDate DateTime
+  deadline DateTime
+  Price Decimal
+}
+
+model Status{
+  id Int @id @default(autoincrement())
+  status String
+  orders Order[]
 }

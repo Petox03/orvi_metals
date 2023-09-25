@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image';
 import { ScrollShadow } from "@nextui-org/react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { RadioGroup, Radio } from "@nextui-org/radio";
 
 const ErpNavbarComponent = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +19,7 @@ const ErpNavbarComponent = () => {
     return (
         <>
             <div className="relative ">
-                <ScrollShadow hideScrollBar className="h-auto md:h-screen bg-[#2a3f54] sticky top-0">
+                <ScrollShadow hideScrollBar className="md:h-screen bg-[#2a3f54] sticky top-0">
                     <div className={`flex flex-col transition-all duration-500 ease-in-out ${isOpen ? 'w-64' : 'w-20'} h-screen px-4 py-8 text-white`}>
                         <div className="flex items-center justify-between">
                             <h1 className={`${isOpen ? 'block' : 'hidden'} text-2xl font-semibold transition-all duration-200 ease-in-out`}>ORVI Metals</h1>
@@ -42,16 +41,15 @@ const ErpNavbarComponent = () => {
                             <Accordion selectionMode="multiple" isCompact>
                                 <AccordionItem key="1" aria-label="Accordion 1" title={<span className="text-white">Home</span>}>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin">Inicio</Link></button>
-                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/home">Prueba</Link></button>
                                 </AccordionItem>
                                 <AccordionItem key="2" aria-label="Accordion 1" title={<span className="text-white">E-Commerce</span>}>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/dashboard">Dashboard</Link></button>
-                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/products">Productos</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Productos</Link></button>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/orders">Órdenes</Link></button>
-                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/promotions">Promociones</Link></button>
-                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/support">Soporte</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Promociones</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Soporte</Link></button>
                                 </AccordionItem>
-                                <AccordionItem key="3" aria-label="Accordion 2" title={<span className="text-white">Accordion 2</span>}>
+                                <AccordionItem key="3" aria-label="Accordion 2" title={<span className="text-white">Inventario</span>}>
                                     
                                 </AccordionItem>
                             </Accordion>
