@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ErpNav = () => {
     return (
-        <div className="relative p-8 w-full bg-[#ededed]">
+        <div className="relative p-8 w-full bg-[#ffffff]">
             <section className="absolute top-2 right-1">
                 <Dropdown >
                     <DropdownTrigger>

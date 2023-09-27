@@ -12,18 +12,14 @@ const ErpNavbarComponent = () => {
         setIsOpen(false);
     }
 
-    const defaultContent =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
-
     return (
         <>
             <div className="relative ">
-                <ScrollShadow hideScrollBar className="md:h-screen bg-[#2a3f54] sticky top-0">
-                    <div className={`flex flex-col transition-all duration-500 ease-in-out ${isOpen ? 'w-64' : 'w-20'} h-screen px-4 py-8 text-white`}>
+                <ScrollShadow hideScrollBar className={`${isOpen ? 'h-screen w-screen md:w-[auto] bg-[#2a3f54]' : 'h-[5rem]'} md:h-screen md:bg-[#2a3f54] sticky top-0 z-50`}>
+                    <div className={`${isOpen ? 'sm:w-screen sm:h-screen md:w-full' : 'w-20 sm:h-[5rem]'} md:h-screen flex flex-col transition-all duration-500 ease-in-out px-4 py-8 text-white`}>
                         <div className="flex items-center justify-between">
-                            <h1 className={`${isOpen ? 'block' : 'hidden'} text-2xl font-semibold transition-all duration-200 ease-in-out`}>ORVI Metals</h1>
-                            <button onClick={() => setIsOpen(!isOpen)} className='text-2xl'>
+                            <h1 className={`${isOpen ? 'block' : 'hidden'} text-2xl font-semibold`}>ORVI Metals</h1>
+                            <button onClick={() => setIsOpen(!isOpen)} className='text-2xl text-slate-900 md:text-white/60 md:hover:text-white transition-all duration-500 ease-in-out'>
                                 {isOpen ? 'X' : '☰'}
                             </button>
                         </div>

@@ -1,6 +1,6 @@
 import { Card } from "@nextui-org/card";
 import Image from "next/image";
-/* import Chart from "@/components/ChartComponents/Chart"; */
+import Chart from "@/components/ChartComponents/Chart";
 
 export default function Dashboard() {
     return (
@@ -48,11 +48,11 @@ export default function Dashboard() {
                     </div>
                 </Card>
 
-                <div>
-                    {/* <Chart></Chart> */}
-                </div>
-
             </div>
+            <div className="mt-10">
+                <Chart></Chart>
+            </div>
+
         </>
     );
 }
