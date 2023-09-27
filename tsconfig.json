@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/app/login/layout.tsx", "app/(shop)/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/app/login/layout.tsx", "app/(shop)/page.jsx", "components/ProductComponents/CardProduct.jsx"],
   "exclude": ["node_modules"]
 }
