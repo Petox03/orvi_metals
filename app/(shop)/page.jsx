@@ -16,7 +16,9 @@ export default function Home() {
 
 			<HomeBanner/>
 
-			<CardProduct maxView={4}/>
+			<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+			<CardProduct category={null} maxView={4} action={'best-sellers'}/>
+			</div>
 
 			<div className='mt-10 container flex items-center place-content-center text-xl md:text-3xl'>
                 <Link href={'/products'}>Conoce Todos Los Productos ➤</Link>

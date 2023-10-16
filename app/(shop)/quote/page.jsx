@@ -1,101 +1,52 @@
-
 'use client';
 import Image from "next/image";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/table";
-import {Button} from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
+import { useEffect, useState } from "react";
 
-export default function cart() {
+export default function Quote() {
+
+    const fertchOrders = async () => {
+        const response = await fetch('/api/quote', {
+            method: 'GET',
+        })
+        const data = await response.json();
+
+        setOrders(Array.isArray(data) ? data : [data]);
+
+    }
+
+    useEffect(() => {
+        fertchOrders();
+    }, []);
+
+    const [orders, setOrders] = useState([]);
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2">
-
             <div className="p-5 bg-[#f7f9ff]">
                 <h1 className="text-3xl font-semibold">Tus Órdenes</h1>
-                <section className="w-full mt-6">
-                    <div className="grid grid-cols-4">
-                        <div>
-                            <Image
-                                src={'/img/icons/b0f7cc.png'}
-                                alt={'product image'}
-                                width={150}
-                                height={150}>
 
-                            </Image>
-                        </div>
-                        <div className="col-span-3 ml-5">
-                            <h1 className="text-xl font-semibold">Órden #1</h1>
-                            <p>Cantidad: 3 productos</p>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full mt-6">
-                    <div className="grid grid-cols-4">
-                        <div>
-                            <Image
-                                src={'/img/icons/b0f7cc.png'}
-                                alt={'product image'}
-                                width={150}
-                                height={150}>
-
-                            </Image>
-                        </div>
-                        <div className="col-span-3 ml-5">
-                            <h1 className="text-xl font-semibold">Órden #2</h1>
-                            <p>Cantidad: 5 productos</p>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full mt-6">
-                    <div className="grid grid-cols-4">
-                        <div>
-                            <Image
-                                src={'/img/icons/b0f7cc.png'}
-                                alt={'product image'}
-                                width={150}
-                                height={150}>
-
-                            </Image>
-                        </div>
-                        <div className="col-span-3 ml-5">
-                            <h1 className="text-xl font-semibold">Órden #3</h1>
-                            <p>Cantidad: 2 productos</p>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full mt-6">
-                    <div className="grid grid-cols-4">
-                        <div>
-                            <Image
-                                src={'/img/icons/b0f7cc.png'}
-                                alt={'product image'}
-                                width={150}
-                                height={150}>
-
-                            </Image>
-                        </div>
-                        <div className="col-span-3 ml-5">
-                            <h1 className="text-xl font-semibold">Órden #4</h1>
-                            <p>Cantidad: 1 productos</p>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full mt-6">
-                    <div className="grid grid-cols-4">
-                        <div>
-                            <Image
-                                src={'/img/icons/b0f7cc.png'}
-                                alt={'product image'}
-                                width={150}
-                                height={150}>
-
-                            </Image>
-                        </div>
-                        <div className="col-span-3 ml-5">
-                            <h1 className="text-xl font-semibold">Órden #5</h1>
-                            <p>Cantidad: 7 productos</p>
-                        </div>
-                    </div>
-                </section>
+                {orders.map(item => {
+                    return (
+                        <section key={item.id} className="w-full mt-6">
+                            <div className="grid grid-cols-4">
+                                <div>
+                                    <Image
+                                        src={'/img/icons/b0f7cc.png'}
+                                        alt={'product image'}
+                                        width={150}
+                                        height={150}
+                                    />
+                                </div>
+                                <div className="col-span-3 ml-5">
+                                    <h1 className="text-xl font-semibold">Órden #{item.id}</h1>
+                                    <p>Cantidad: {item.OrderItem.length} productos</p>
+                                </div>
+                            </div>
+                        </section>
+                    );
+                })}
             </div>
 
             <div className="mt-5 md:mt-0 p-5">

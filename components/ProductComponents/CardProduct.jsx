@@ -1,26 +1,43 @@
+'use client';
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
+import { useState, useEffect } from "react";
 
 
-const fetchProducts = () => {
-    return fetch(`https://jsonplaceholder.typicode.com/posts`, {
-        next: {
-            revalidate: 60
+export default function CardProduct(props) {
+
+    const { maxView, category, action } = props;
+
+    const serchProducts = async (category) => {
+        let response
+        if(category != null){
+            const myCategory = parseInt(category, 10);
+            response = await fetch('/api/products', {
+                method: 'POST',
+                body: JSON.stringify({category: myCategory})
+            })
         }
-    })
-    .then(res => res.json());
-};
+        else{
+            response = await fetch(`/api/products?limit=${maxView}&action=${action}`, {
+                method: 'GET',
+            });
+        }
+        const data = await response.json();
+        setProducts(Array.isArray(data) ? data : [data]);
 
-export default async function CardProduct({ maxView }) {
+    }
 
-    const products = await fetchProducts();
+    useEffect(() => {
+        serchProducts(category);
+    }, [category]);
+
+    const [products, setProducts] = useState([]);
 
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {products.slice(0, maxView).map(item => (
+                {products.map(item => (
                     <div key={item.id}>
                         <Card className='mt-7 md:mt-0'>
                             <CardBody className='overflow-visible min-h-[20em] max-h-[29em]' >
@@ -29,10 +46,11 @@ export default async function CardProduct({ maxView }) {
                                     alt={'product image'}
                                     width={600}
                                     height={600}
-                                    className="w-full h-full object-cover"
+                                    className="w-full max-h-[18rem] md:h-full object-cover rounded-lg"
+                                    priority
                                 />
-                            <p className='mt-3 text-center text-xl'>product title</p>
-                            <p className="mt-6 text-small">{item.body}</p>
+                                <p className='mt-3 text-center text-lg'>{item.name}</p>
+                                <p className="mt-6 text-sm">{item.description}</p>
 
                             </CardBody>
                             <CardFooter className='flex justify-center'>
@@ -44,7 +62,6 @@ export default async function CardProduct({ maxView }) {
 
                     </div>
                 ))}
-            </div>
         </>
     );
 }

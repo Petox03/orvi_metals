@@ -5,8 +5,7 @@ import { Divider } from '@nextui-org/divider';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue } from "@nextui-org/table";
 import { Progress, Skeleton, Image } from "@nextui-org/react";
 
-export default function admin() {
-
+export default function Admin() {
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5">

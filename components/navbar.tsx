@@ -25,11 +25,10 @@ import {
 } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
+import { signOut } from "next-auth/react";
 
-import { useRouter } from "next/router";
 
 export const Navbar = () => {
-
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -45,9 +44,6 @@ export const Navbar = () => {
 			type="search"
 		/>
 	);
-
-	/* const router = useRouter();	
-	const currentPath = router.pathname; */
 
 	return (
 		<NextUINavbar maxWidth="xl" className="fixed">
@@ -76,35 +72,18 @@ export const Navbar = () => {
 						</NavbarItem>
 					))}
 				</ul>
-				{/* <ul className="hidden lg:flex gap-4 justify-start ml-2">
-					{siteConfig.navItems.map((item) => (
-						<NavbarItem key={item.href}>
-							<NextLink
-								className={clsx(
-									linkStyles({ color: "foreground" }),
-									"data-[active=true]:text-primary data-[active=true]:font-medium",
-									{ 'text-primary': currentPath === item.href }
-								)}
-								color="foreground"
-								href={item.href}
-							>
-								{item.label}
-							</NextLink>
-						</NavbarItem>
-					))}
-				</ul> */}
+			</NavbarContent>
+
+			<NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full">
+			<NavbarItem className="hidden sm:flex gap-2">
+					<Link href="/cart"><Image src='/img/icons/shopCart.png' width={500} height={500} alt="ShopCart"></Image></Link>
+				</NavbarItem>
 			</NavbarContent>
 
 			<NavbarContent
 				className="hidden sm:flex basis-1/5 sm:basis-full"
 				justify="end"
 			>
-				<NavbarItem className="hidden sm:flex gap-2">
-				</NavbarItem>
-
-				<NavbarItem className="hidden sm:flex gap-2">
-					<Link href="/cart"><Image src='/img/icons/shopCart.png' width={500} height={500} alt="ShopCart"></Image></Link>
-				</NavbarItem>
 
 				<NavbarItem>
 					<Dropdown placement="bottom-end">
@@ -127,7 +106,7 @@ export const Navbar = () => {
 							<DropdownItem key="settings">My Settings</DropdownItem>
 							<DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
 							<DropdownItem key="logout" color="danger">
-								<Link href="/login" className="text-danger">Log Out</Link>
+								<p className="text-danger" onClick={() => signOut()}>Cerrar Sesión</p>
 							</DropdownItem>
 						</DropdownMenu>
 					</Dropdown>

@@ -4,6 +4,7 @@ import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
+import SessionAuthProvider from "@/context/SessionAuthProvider";
 
 export interface ProvidersProps {
 	children: React.ReactNode;
@@ -13,7 +14,11 @@ export interface ProvidersProps {
 export function Providers({ children, themeProps }: ProvidersProps) {
 	return (
 		<NextUIProvider>
-			<NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+			<NextThemesProvider {...themeProps}>
+				<SessionAuthProvider>
+					{children}
+				</SessionAuthProvider>
+			</NextThemesProvider>
 		</NextUIProvider>
 	);
 }

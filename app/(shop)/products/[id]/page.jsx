@@ -1,25 +1,21 @@
-'use client';
 import Image from "next/image";
 import ProductFeatures from "@/components/ProductComponents/ProductFeatures";
 import { Card, CardBody } from "@nextui-org/card";
 import React from "react";
 
-const fetchSingleProduct = (id) => {
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        next: {
-            revalidate: 60
-        }
-    })
-        .then(res => res.json());
-};
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient();
 
-const fetchComments = (id) => {
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`, {
-        next: {
-            revalidate: 60
+const fetchSingleProduct = async (id) => {
+    const product = await prisma.product.findUnique({
+        where: {
+            id: id
+        },
+        include: {
+            storageType: true
         }
-    })
-        .then(res => res.json());
+    });
+    return product;
 };
 
 
@@ -27,8 +23,7 @@ export default async function SingleProduct({ params }) {
 
     const { id } = params;
 
-    const product = await fetchSingleProduct(id);
-    const comments = await fetchComments(id);
+    const product = await fetchSingleProduct(parseInt(id, 10));
 
     return (
 
@@ -63,14 +58,15 @@ export default async function SingleProduct({ params }) {
                 </div>
                 <div className="mt-7 md:ml-12 md:col-span-3">
 
-                    <h3 className="text-3xl">{product.title}</h3>
+                    <h3 className="text-3xl">{product.name}</h3>
                     <p>¡Cotizar Ahora!</p>
 
                     <p className="mt-7">
-                        {product.body}
+                        {product.description}
                     </p>
 
-                    <ProductFeatures />
+                    <ProductFeatures productId={product.id} amount={product.amount} storageType={product.storageType.Type}/>
+                    <p>Quedan: {product.amount}{product.storageType.Type}</p>
 
                 </div>
 
@@ -78,14 +74,8 @@ export default async function SingleProduct({ params }) {
             <div className="container flex justify-center items-center mt-10">
                 <Card className="w-4/5">
                     <CardBody>
-                        <h1 className="text-3xl text-center">{product.title}</h1>
+                        <h1 className="text-3xl text-center">{product.name}</h1>
                         <h3 className="text-xl">Aplicaciones:</h3>
-
-                        <ul className="text-xl list-decimal px-7 py-4">
-                            {comments.slice(0, 2).map(comment => (
-                                <li key={comment.id}>{comment.body}</li>
-                            ))}
-                        </ul>
 
                         <Image
                             className="w-full md:p-10"
@@ -96,12 +86,6 @@ export default async function SingleProduct({ params }) {
                         />
 
                         <h3 className="text-xl">Información extra:</h3>
-
-                        <ul className="text-xl list-decimal px-7 py-4">
-                            {comments.slice(2, 5).map(comment => (
-                                <li key={comment.id}>{comment.body}</li>
-                            ))}
-                        </ul>
                     </CardBody>
                 </Card>
             </div>

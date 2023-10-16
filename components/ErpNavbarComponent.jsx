@@ -42,7 +42,7 @@ const ErpNavbarComponent = () => {
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/dashboard">Dashboard</Link></button>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Productos</Link></button>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/orders">Órdenes</Link></button>
-                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Promociones</Link></button>
+                                    <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Metas</Link></button>
                                     <button onClick={handdleClick} className="block rounded-full mb-5 ml-5"><Link href="/admin/#">Soporte</Link></button>
                                 </AccordionItem>
                                 <AccordionItem key="3" aria-label="Accordion 2" title={<span className="text-white">Inventario</span>}>

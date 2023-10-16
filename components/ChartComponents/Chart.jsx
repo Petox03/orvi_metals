@@ -4,6 +4,8 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { Card, CardHeader, CardBody } from '@nextui-org/react';
+import AmChartComponent from "./DoubleLineChart";
+import DonutChart from "./DonutChartComponent";
 
 // Habilita animaciones
 am4core.useTheme(am4themes_animated);
@@ -38,100 +40,21 @@ function Charts() {
         series.strokeWidth = 2;
         series.minBulletDistance = 10;
 
-        // Crea una instancia de gráfico de donut
-        let donutChart = am4core.create("donutChartdiv", am4charts.PieChart);
-        let donutChart2 = am4core.create("donutChartdiv2", am4charts.PieChart);
-        let donutChart3 = am4core.create("donutChartdiv3", am4charts.PieChart);
-
-        // Configura el radio interno del gráfico de donut
-        donutChart.innerRadius = am4core.percent(50);
-        donutChart2.innerRadius = am4core.percent(50);
-        donutChart3.innerRadius = am4core.percent(50);
-
-        // Crea una serie para el gráfico de donut
-        let pieSeries = donutChart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "value";
-        pieSeries.dataFields.category = "category";
-        pieSeries.labels.template.disabled = true;
-        pieSeries.colors.list = [
-            am4core.color("#ffe6e6"), // Color para 'Current'
-            am4core.color("#f15656")  // Color para 'Remainder'
-        ];
-        // Añade datos
-        let limit = 100; // Este es el límite
-        let value = 81; // Este es el valor actual
-        donutChart.data = [
-            { value: limit - value, category: "Remainder" },
-            { value: value, category: "Current" },
-        ];
-
-        // Crea una serie para el gráfico de donut
-        let pieSeries2 = donutChart2.series.push(new am4charts.PieSeries());
-        pieSeries2.dataFields.value = "value";
-        pieSeries2.dataFields.category = "category";
-        pieSeries2.labels.template.disabled = true;
-        pieSeries2.colors.list = [
-            am4core.color("#d4eee5"), // Color para 'Current'
-            am4core.color("#00b074")  // Color para 'Remainder'
-        ];
-        let limit2 = 100; // Este es el límite
-        let value2 = 22; // Este es el valor actual
-        donutChart2.data = [
-            { value: limit2 - value2, category: "Remainder" },
-            { value: value2, category: "Current" },
-        ];
-
-        // Crea una serie para el gráfico de donut
-        let pieSeries3 = donutChart3.series.push(new am4charts.PieSeries());
-        pieSeries3.dataFields.value = "value";
-        pieSeries3.dataFields.category = "category";
-        pieSeries3.labels.template.disabled = true;
-        pieSeries3.colors.list = [
-            am4core.color("#dff0f9"), // Color para 'Current'
-        ];
-        let limit3 = 100; // Este es el límite
-        let value3 = 62; // Este es el valor actual
-        donutChart3.data = [
-            { value: limit3 - value3, category: "Remainder" },
-            { value: value3, category: "Current" },
-        ];
-
-        // Agrega texto en el centro
-        let label = donutChart.chartContainer.createChild(am4core.Label);
-        label.text = `${value}%`;
-        label.align = "center";
-        label.valign = "middle";
-        label.fontSize = 25;
-        let label2 = donutChart2.chartContainer.createChild(am4core.Label);
-        label2.text = `${value2}%`;
-        label2.align = "center";
-        label2.valign = "middle";
-        label2.fontSize = 25;
-        let label3 = donutChart3.chartContainer.createChild(am4core.Label);
-        label3.text = `${value3}%`;
-        label3.align = "center";
-        label3.valign = "middle";
-        label3.fontSize = 25;
-
-
         return () => {
             lineChart.dispose();
-            donutChart.dispose();
-            donutChart2.dispose();
-            donutChart3.dispose();
         };
     }, []);
 
     return (
         <>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mb-7'>
                 <Card className='w-full p-5'>
                     <CardHeader className='text-2xl'>Gráficas</CardHeader>
                     <CardBody className='grid grid-cols-1 md:grid-cols-3'>
-                        <div id="donutChartdiv" style={{ width: "100%", height: "15rem" }}></div>
-                        <div id="donutChartdiv2" style={{ width: "100%", height: "15rem" }}></div>
-                        <div id="donutChartdiv3" style={{ width: "100%", height: "15rem" }}></div>
+                        <DonutChart chartId={"donut1"} chartLimit={100} chartValue={81} color1={"ffe6e6"} color2={"f15656"}></DonutChart>
+                        <DonutChart chartId={"donut2"} chartLimit={100} chartValue={22} color1={"d4eee5"} color2={"00b074"}></DonutChart>
+                        <DonutChart chartId={"donut3"} chartLimit={100} chartValue={62} color1={"dff0f9"} color2={"2d9cdb"}></DonutChart>
                     </CardBody>
                 </Card>
                 <Card>
@@ -141,7 +64,12 @@ function Charts() {
                     </CardBody>
                 </Card>
             </div>
-
+            <Card>
+                <CardHeader>Rentabilidad Total</CardHeader>
+                <CardBody>
+                    <AmChartComponent/>
+                </CardBody>
+            </Card>
         </>
     );
 }
