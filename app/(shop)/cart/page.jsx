@@ -3,7 +3,6 @@ import CartProduct from "@/components/ProductComponents/CartProduct";
 import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
 import { ScrollShadow, Button } from "@nextui-org/react";
-import ButtonAuth from "@/components/ButtonAuth";
 import { useState } from "react";
 
 export default function Cart() {
@@ -40,7 +39,6 @@ export default function Cart() {
                 <div>
                     <h1 className="text-3xl font-semibold">Tu Carrito</h1>
                     <p>¿Listo para cotizar?</p>
-                    <ButtonAuth/>
 
                     <ScrollShadow className="w-full md:h-[44em] p-3 mb-5 md:mb-0">
                         <CartProduct></CartProduct>
